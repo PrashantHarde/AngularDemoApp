@@ -10,10 +10,10 @@
                 <div class="col-12 form-input">
                     <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Enter Email">
+                            <input type="email" class="form-control" placeholder="Enter Email" required email>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Enter Password">
+                            <input type="password" class="form-control" placeholder="Enter Password" required>
                         </div>
                         <button type="submit" class="btn btn-success">Login</button>
                         <button 

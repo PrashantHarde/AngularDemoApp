@@ -8,7 +8,7 @@
                 </div>
 
                 <div class="col-12 form-input">
-                    <form #loginForm="ngForm">
+                    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
                         <div class="form-group myinput name">
                             <input type="text" class="form-control" placeholder="Enter Name">
                         </div>
@@ -17,10 +17,12 @@
                             <input type="text" class="form-control" placeholder="Enter Phone Number">
                         </div>
                         <div class="form-group">
-                            <select class="form-control" multiple="true">
-                                <option value="java">java</option>
-                                <option value="kava">kava</option>
-                                <option value="mava">lava</option>
+                            <select class="form-control">
+                                <ng-multiselect-dropdown [placeholder]="'Select Favourite Subject'" [data]="dropdownList"
+                                    [(ngModel)]="selectedItems" [settings]="dropdownSettings"
+                                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)"
+                                    (click)="onCheck('give your selected details here',$event)">
+                                </ng-multiselect-dropdown>
                             </select>
                         </div>
                         <div class="form-group myinput">
@@ -29,7 +31,7 @@
                         <div class="form-group myinput">
                             <input type="password" class="form-control" placeholder="Enter Password">
                         </div>
-                        <button type="button" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
                     </form>
                 </div>
             </div>

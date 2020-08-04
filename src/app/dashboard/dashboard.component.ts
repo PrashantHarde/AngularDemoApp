@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +10,9 @@ import { Chart } from 'chart.js';
 export class DashboardComponent implements OnInit {
   chart = [];
   chart2 = [];
-  new = [];
-  constructor() { }
+  collapsed = true;
+
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
     this.chart = new Chart('bar',
@@ -24,53 +26,50 @@ export class DashboardComponent implements OnInit {
           },
         },
         data: {
-          labels: ["M", "T", "W", "T", "F"],
+          labels: ["Maths", "Physics", "Chemistry", "Social Science", "English"],
           datasets: [
             {
               type: 'bar',
-              label: 'Apples',
+              label: 'User 1',
               data: [40, 60, 100, 20, 80, 0],
               backgroundColor: "rgba(255,0,255,0.4)",
               borderColor: 'rgba(255,0,255,0.4)',
               fill: false
             },
-            { 
+            {
               type: 'bar',
-              label: 'Oranges',
-              data: [30, 80, 50, 60, 40],
+              label: 'User 2',
+              data: [60, 80, 40, 60, 20],
               backgroundColor: "rgba(0,0,255,0.4)",
               borderColor: "rgba(0,0,255,0.4)",
               fill: false
             }
           ]
         }
-      }), 
-
-      new Chart('pie', {
-        type: 'pie',
-        options: {
-          responsive: true,
-          title: {
-            display: true,
-            text: 'Pie Chart'
-          },
-          legend: {
-            position: 'top',
-          },
-          animation: {
-            animateScale: true,
-            animateRotate: true
-          },
-          data: {
-            datasets: [{
-              type: 'pie',
-              data: [45,10,5,25,15].reverse(),
-              backgroundColor: ["red","orange","green","yellow","blue"],
-              label: 'Dataset 1'
-            }],
-            labels: ['Red', 'Orange', 'Yellow' , 'Green', 'Blue']
+      }
+    )
+    this.chart2 = new Chart('pie', {
+      type: 'pie',
+      data: {
+        labels: ["Total Users", "Active Users"],
+        datasets: [
+          {
+            label: "Users",
+            backgroundColor: ["#3e95cd", "#8e5ea2"],
+            data: [1000,850]
           }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Pie Chart'
         }
-      })
+      }
+    });
+  }
+
+  onLogout() {
+    this.router.navigate(['/login']);
   }
 }
