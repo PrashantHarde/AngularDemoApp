@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import {  IDropdownSettings } from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'app-registration',
@@ -12,8 +12,7 @@ export class RegistrationComponent implements OnInit {
 
   dropdownList = [];
   selectedItems = [];
-  dropdownSettings : IDropdownSettings = {};
-  categoryserviceList: Array<Int32Array> = [];
+  dropdownSettings: IDropdownSettings ;
 
   constructor( private router: Router) { }
 
@@ -25,17 +24,13 @@ export class RegistrationComponent implements OnInit {
       { item_id: 4, item_text: 'Physics' },
       { item_id: 5, item_text: 'Social Sciende' }
     ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Maths' },
-      { item_id: 4, item_text: 'English' }
-    ];
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'item_id',
       textField: 'item_text',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
+      itemsShowLimit: 10,
       allowSearchFilter: true
     };
   }
@@ -45,18 +40,6 @@ export class RegistrationComponent implements OnInit {
   }
   onSelectAll(items: any) {
     console.log(items);
-  }
-  onCheck(service: any, event) {
-    console.log(service, event, "Selected");
-    if (event.target.checked) {
-      this.categoryserviceList.push(service);
-  
-    } else if (!event.target.checked) {
-      let index = this.categoryserviceList.indexOf(service);
-      this.categoryserviceList.splice(index, 1);
-    }
-    console.log(this.categoryserviceList);
-  
   }
   onSubmit(form: NgForm) {
     this.router.navigate(['/login']);    
