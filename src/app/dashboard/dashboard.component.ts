@@ -9,6 +9,7 @@ import { Chart } from 'chart.js';
 export class DashboardComponent implements OnInit {
   chart = [];
   chart2 = [];
+  new = [];
   constructor() { }
 
   ngOnInit(): void {
