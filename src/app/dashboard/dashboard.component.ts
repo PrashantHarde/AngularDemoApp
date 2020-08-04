@@ -23,27 +23,27 @@ export class DashboardComponent implements OnInit {
           },
         },
         data: {
-          labels: ["M", "T", "W", "T", "F", "S", "S"],
+          labels: ["M", "T", "W", "T", "F"],
           datasets: [
             {
               type: 'bar',
               label: 'Apples',
-              data: [40, 60, 100, 20, 80],
+              data: [40, 60, 100, 20, 80, 0],
               backgroundColor: "rgba(255,0,255,0.4)",
               borderColor: 'rgba(255,0,255,0.4)',
               fill: false
             },
-            {
+            { 
               type: 'bar',
               label: 'Oranges',
-              data: [30, 60, 50, 100, 40],
+              data: [30, 80, 50, 60, 40],
               backgroundColor: "rgba(0,0,255,0.4)",
               borderColor: "rgba(0,0,255,0.4)",
               fill: false
             }
           ]
         }
-      }) 
+      }), 
 
       new Chart('pie', {
         type: 'pie',
@@ -62,9 +62,12 @@ export class DashboardComponent implements OnInit {
           },
           data: {
             datasets: [{
+              type: 'pie',
               data: [45,10,5,25,15].reverse(),
-              backgroundColor: ["red","orange","green","yellow","blue"]
-            }]
+              backgroundColor: ["red","orange","green","yellow","blue"],
+              label: 'Dataset 1'
+            }],
+            labels: ['Red', 'Orange', 'Yellow' , 'Green', 'Blue']
           }
         }
       })
